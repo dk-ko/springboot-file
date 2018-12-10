@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 @RestController
 public class WebRestController {
 	
-	@GetMapping("/test")
+	@GetMapping("/testz")
 	public String hello() {
 		return "HelloWorld !!";
 	}
