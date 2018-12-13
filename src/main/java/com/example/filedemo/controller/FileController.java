@@ -30,7 +30,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 //@Controller
-//@RequestMapping("/file")
 public class FileController {
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 	
@@ -38,7 +37,7 @@ public class FileController {
 	private DBFileStorageService DBFileStorageService;
 	
 	@PostMapping("/uploadFile")
-//	@RequestMapping(value="/upload", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+//	@RequestMapping(value="/uploadFile", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
 		DBFile dbFile = DBFileStorageService.storeFile(file);
 		
@@ -61,8 +60,8 @@ public class FileController {
 	}
 	
 	@GetMapping("/downloadFile/{fileId}")
-	public ResponseEntity<Resource> downloadFile(@PathVariable String fileID) {
-		DBFile dbFile = DBFileStorageService.getFile(fileID);
+	public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
+		DBFile dbFile = DBFileStorageService.getFile(fileId);
 		
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(dbFile.getFileName()))
